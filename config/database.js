@@ -1,8 +1,8 @@
-import db from "node-postgres"
+import { Pool } from "pg"
 import dotenv from "dotenv"
 dotenv.config()
 
-const connect_db = new db.Pool({
+const db = new Pool({
     host: process.env.HOST,
     port: process.env.PORT,
     user: process.env.USER,
@@ -10,4 +10,4 @@ const connect_db = new db.Pool({
     database: process.env.DATABASE
 });
 
-export default connect_db
+export default db
