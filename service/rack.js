@@ -8,7 +8,7 @@ export const addToRack = async (req, res) => {
 
     const data = {
         id: id,
-        user_id: req.cookies.USR_ID, 
+        user_id: req.payload.id || req.cookies.USR_ID, 
         product_id: product_id,
         quantity: quantity,
         location: location,

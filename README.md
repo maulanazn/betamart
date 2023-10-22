@@ -65,6 +65,7 @@ Is an UMKM store that sell daily products to its consumers
 
 > body:
 > - product_id
+> - quantity
 >
 > response:
 > - status: 200
@@ -73,7 +74,7 @@ Is an UMKM store that sell daily products to its consumers
 > header:
 > - Set-Cookie:
 >
->> - PY_PRD_ID=integer;
+>> - PYM_PRD_ID=integer;
 > - Cookie:
 >
 >> - USR_ID=integer; PRD_ID=integer;
