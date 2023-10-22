@@ -1,5 +1,5 @@
 import app from 'express'
-import { loginUser, registerUser } from '../service/auth';
+import { loginUser, registerUser } from '../service/auth.js';
 
 const router = app();
 const PORT = 3000

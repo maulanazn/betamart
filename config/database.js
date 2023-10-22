@@ -1,13 +1,8 @@
-import { Pool } from "pg"
+import sqlite3 from "sqlite3"
 import dotenv from "dotenv"
 dotenv.config()
+sqlite3.verbose()
 
-const db = new Pool({
-    host: process.env.HOST,
-    port: process.env.PORT,
-    user: process.env.USER,
-    password: process.env.PASSWORD,
-    database: process.env.DATABASE
-});
+const db = new sqlite3.Database("./config/product.db")
 
 export default db
