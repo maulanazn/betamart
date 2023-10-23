@@ -25,3 +25,17 @@ export const GetProductById = (id, callback) => {
         });
     })
 }
+
+export const GetAllProduct = (data, callback) => {
+    db.serialize(() => {
+        db.run("BEGIN")
+        db.all(`SELECT products.name as name, products.stock as stock, products.price as price, rack.location as location FROM products JOIN rack ON products.id = rack.product_id  WHERE stock LIKE '%${data.quantity}%' UNION SELECT products.name as name, products.stock as stock, products.price as price, rack.location as location FROM products JOIN rack ON products.id = rack.product_id WHERE location LIKE '%${data.location}%' UNION SELECT products.name as name, products.stock as stock, products.price as price, rack.location as location FROM products JOIN rack ON products.id = rack.product_id WHERE price LIKE '%${data.price}%' UNION SELECT products.name as name, products.stock as stock, products.price, rack.location as location FROM products JOIN rack ON products.id = rack.product_id WHERE name LIKE '%${data.name}%'`, (err, row) => {
+            if (err) {
+                db.run("ROLLBACK")
+            }
+
+            db.run("COMMIT")
+            callback(err, row)
+        })
+    })
+}

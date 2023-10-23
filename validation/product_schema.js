@@ -1,6 +1,6 @@
 import Joi from "joi"
 
-const ProductSchema = Joi.object({
+export const ProductSchema = Joi.object({
     user_id: Joi.number().min(1).message({
         "any.required": "Must filled"
     }),
@@ -18,11 +18,9 @@ const ProductSchema = Joi.object({
         "any.required": "Must number"
     }),
     location: Joi.string().pattern(new RegExp(/^[a-zA-Z0-9]{3,80}$/)).message({
-        "any.required": "Must number"
+        "any.required": "Must string"
     }),
     price: Joi.number().min(1).message({
         "any.required": "Must number"
     }),
 })
-
-export default ProductSchema
