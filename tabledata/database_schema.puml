@@ -1,9 +1,0 @@
-@startuml WhiteSmoke
-
-entity Users {
-    id string <pk>
-    name string <unn>
-    password string <nn>
-}
-
-@enduml
